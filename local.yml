@@ -1,0 +1,10 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- hosts: localhost
+  connection: local
+  become: yes
+
+  pre_tasks:
+    - debug:
+        msg: Hello world!
