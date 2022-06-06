@@ -17,3 +17,7 @@
   #         environment:
   #           ANSIBLE_CONFIG: "{{ playbook_dir }}/ansible.cfg"
 
+  roles:
+    - install_lxd
+    - create_lxc_environment
+    - create_k3s_cluster
