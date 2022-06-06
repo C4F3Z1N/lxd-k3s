@@ -4,6 +4,16 @@
   hosts: all
   become: yes
 
-  tasks:
-    - debug:
-        msg: Hello world!
+  pre_tasks:
+    - block:
+        - name: Install dependencies (1st method)
+          community.general.ansible_galaxy_install:
+            type: both
+            requirements_file: requirements.yml
+
+      rescue:
+        - name: Install dependencies (2nd method)
+          command: ansible-galaxy install -r requirements.yml
+          environment:
+            ANSIBLE_CONFIG: "{{ playbook_dir }}/ansible.cfg"
+
