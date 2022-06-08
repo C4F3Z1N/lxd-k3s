@@ -1,5 +1,6 @@
 #!/usr/bin/env ansible-playbook
 ---
+
 - name: Install k3s in lxc/lxd
   hosts: all
   become: yes
@@ -16,6 +17,8 @@
   #         command: ansible-galaxy install -r requirements.yml
   #         environment:
   #           ANSIBLE_CONFIG: "{{ playbook_dir }}/ansible.cfg"
+  #         register: _result
+  #         changed_when: ("was installed successfully" in _result.stdout)
 
   roles:
     - install_lxd
