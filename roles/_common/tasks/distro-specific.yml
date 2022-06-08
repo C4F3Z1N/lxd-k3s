@@ -1,0 +1,12 @@
+---
+# tasks file for _common
+
+- name: Attempt to use a distro-specific playbook
+  include_tasks: "{{ lookup('first_found', find_me) }}"
+  register: included
+  vars:
+    find_me:
+      files:
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}-based.yml"
+        - "generic.yml"

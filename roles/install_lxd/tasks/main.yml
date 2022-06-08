@@ -1,2 +1,1 @@
----
-# tasks file for install_lxd
+../../_common/tasks/distro-specific.yml
