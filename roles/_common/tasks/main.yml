@@ -1,0 +1,5 @@
+---
+# tasks file for _common
+
+- fail:
+    msg: This role is not intended to be used directly
