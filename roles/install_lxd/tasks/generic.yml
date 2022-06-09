@@ -1,5 +1,16 @@
 ---
 # tasks file for install_lxd
 
-- debug:
-    msg: Hello world!
+- name: Install snapd
+  package:
+    name: snapd
+
+- name: Enable and start snapd service
+  service:
+    name: snapd
+    enabled: yes
+    state: started
+
+- name: Install lxd (via snap)
+  community.general.snap:
+    name: lxd
