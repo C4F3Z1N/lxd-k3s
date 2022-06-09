@@ -5,3 +5,5 @@
   command:
     cmd:  lxd init --preseed
     stdin: "{{ init_preseed | to_nice_yaml }}"
+  environment:
+    PATH: "/var/lib/snapd/snap/bin:{{ ansible_env.PATH }}"
