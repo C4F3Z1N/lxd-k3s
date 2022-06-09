@@ -1,24 +1,16 @@
 #!/usr/bin/env ansible-playbook
 ---
-
 - name: Install k3s in lxc/lxd
   hosts: all
   become: yes
 
   # pre_tasks:
-  #   - block:
-  #       - name: Install dependencies (1st method)
-  #         community.general.ansible_galaxy_install:
-  #           type: both
-  #           requirements_file: requirements.yml
-
-  #     rescue:
-  #       - name: Install dependencies (2nd method)
-  #         command: ansible-galaxy install -r requirements.yml
-  #         environment:
-  #           ANSIBLE_CONFIG: "{{ playbook_dir }}/ansible.cfg"
-  #         register: _result
-  #         changed_when: ("was installed successfully" in _result.stdout)
+  #   - name: Resolve Ansible dependencies
+  #     command: ansible-galaxy install -r requirements.yml
+  #     environment:
+  #       ANSIBLE_CONFIG: "{{ playbook_dir }}/ansible.cfg"
+  #     register: _result
+  #     changed_when: ("was installed successfully" in _result.stdout)
 
   roles:
     - install_lxd
