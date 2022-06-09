@@ -1,2 +1,7 @@
 ---
 # tasks file for create_lxc_environment
+
+- name: Initialize lxd
+  command:
+    cmd:  lxd init --preseed
+    stdin: "{{ init_preseed | to_nice_yaml }}"
