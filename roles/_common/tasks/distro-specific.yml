@@ -8,5 +8,5 @@
     find_me:
       files:
         - "{{ ansible_distribution | lower }}.yml"
-        - "{{ ansible_os_family | lower }}-based.yml"
+        - "{{ ansible_os_family | lower }}-like.yml"
         - "generic.yml"
