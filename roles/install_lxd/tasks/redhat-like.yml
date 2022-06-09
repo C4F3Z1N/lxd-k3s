@@ -1,0 +1,19 @@
+---
+# tasks file for install_lxd
+
+- block:
+    - name: "{{ task_name }}"
+      dnf:
+        name: "{{ rpm_url }}"
+        disable_gpg_check: yes
+  rescue:
+    - name: "{{ task_name }}"
+      yum:
+        name: "{{ rpm_url }}"
+        disable_gpg_check: yes
+  vars:
+    task_name: Install EPEL repository
+    rpm_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+  when: ansible_distribution != "Fedora"
+
+- include_tasks: generic.yml
